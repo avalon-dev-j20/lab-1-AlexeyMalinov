@@ -1,6 +1,8 @@
 package ru.avalon.java.j20.labs.models;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Модель получения последовательности чисел Фибоначчи.
@@ -18,11 +20,15 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+    private final int[]fibonacciArray;
+
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
+    private class FibonacciIterator implements Iterator<Integer> {
+
+        private int index;
 
         /**
          * Определяет, есть ли следующее значение
@@ -34,7 +40,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return index < (fibonacciArray.length - 1);
         }
 
         /**
@@ -45,8 +51,30 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return fibonacciArray[index++];
         }
+    }
+
+    public Fibonacci(int number) {
+        fibonacciArray = calculateFibonacciList(number);
+    }
+
+    private int[] calculateFibonacciList(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("'number' can not be negative");
+        } else if (number == 0) {
+            throw new IllegalArgumentException("'number' can not be zero");
+        } else if (number == 1) {
+            int[]array = {0};
+            return array;
+        }
+        int[] array = new int[number];
+        array[0] = 0;
+        array[1] = 1;
+        for (int i = 2; i < number; i++) {
+            array[i] = array[i - 2] + array[i - 1];
+        }
+        return array;
     }
 
     /**
