@@ -49,7 +49,8 @@ public class Person {
      * {@inheritDoc}
      *
      * @param object
-     * @return
+     * @return {@code true} , если этот объект совпадает с объектом аргумент;
+     * {@code false} в противном случае.
      */
     @Override
     public boolean equals(Object object) {
@@ -60,6 +61,11 @@ public class Person {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return значение хеш-кода для этого объекта
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, surname);

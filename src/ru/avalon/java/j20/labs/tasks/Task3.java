@@ -12,6 +12,9 @@ import java.util.Iterator;
  */
 public class Task3 implements Task {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void run() {
         Fibonacci fibonacci = new Fibonacci(20);

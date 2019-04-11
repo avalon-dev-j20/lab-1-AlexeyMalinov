@@ -4,8 +4,6 @@ import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 import ru.avalon.java.j20.labs.models.Numbers;
 
-import java.util.Arrays;
-
 /**
  * Задание №1.
  *
@@ -27,17 +25,18 @@ public class Task1 implements Task {
     @Override
     public void run() {
         int[] array = arrayFactory.getInstance(20);
-        int min = Numbers.min(convertorIntArrayToIntegerArray(array));
-        int max = Numbers.max(convertorIntArrayToIntegerArray(array));
-        double avg = Numbers.avg(convertorIntArrayToIntegerArray(array));
+        int min = Numbers.min(convertIntArrayToIntegerArray(array));
+        int max = Numbers.max(convertIntArrayToIntegerArray(array));
+        double avg = Numbers.avg(convertIntArrayToIntegerArray(array));
     }
 
     /**
      * Конвертирует массив чисел типа int в массив объектов типа Integer
+     *
      * @param array
-     * @return
+     * @return массив объектов типа Integer
      */
-    private static Integer[] convertorIntArrayToIntegerArray(int[] array){
+    private static Integer[] convertIntArrayToIntegerArray(int[] array) {
         Integer[] integersArray = new Integer[array.length];
         for (int i = 0; i < array.length; i++) {
             integersArray[i] = Integer.valueOf(array[i]);

@@ -15,7 +15,7 @@ public class Task2 implements Task {
      */
     @Override
     public void run() {
-        Point point1 = new Point(14f,7f);
+        Point point1 = new Point(14f, 7f);
         Point point2 = new Point(5, 11);
         Double distance = point1.distanceTo(point2);
     }

@@ -51,7 +51,7 @@ public class Point<E extends Number> {
      */
     public double distanceTo(Point point) {
         float dx = x.floatValue() - point.x.floatValue();
-        float dy = y.floatValue()- point.y.floatValue();
+        float dy = y.floatValue() - point.y.floatValue();
         return Math.sqrt(dx * dx + dy * dy);
     }
 }

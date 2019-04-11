@@ -28,7 +28,7 @@ public class Task5 implements Task {
 
         Set<Integer> set = new HashSet<>();
 
-        for (int item: array){
+        for (int item : array) {
             list.add(item);
             set.add(item);
         }
