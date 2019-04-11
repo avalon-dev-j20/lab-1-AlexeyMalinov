@@ -4,6 +4,8 @@ import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 import ru.avalon.java.j20.labs.models.Numbers;
 
+import java.util.Arrays;
+
 /**
  * Задание №1.
  *
@@ -25,34 +27,21 @@ public class Task1 implements Task {
     @Override
     public void run() {
         int[] array = arrayFactory.getInstance(20);
-        int min = Numbers.min(array);
-        int max = Numbers.max(array);
-        double avg = Numbers.avg(array);
-        /*
-         * TODO(Студент): Выполните задание №1
-         *
-         * 1. Обобщить метод поиск среднего арифметического
-         *
-         *    Выполните обобщение метода с использованием шаблона так,
-         *    чтобы метод мог выполнять поиск среднего арифметического
-         *    в массивах любых чисел: целых и вещественных.
-         *
-         *    Возвращать необходимо значение типа double.
-         *
-         * 2. Обобщить метод поиск максимального значения
-         *
-         *    Выполните обобщение метода с использованием шаблона так,
-         *    чтобы метод мог выполнять поиск максимального значения
-         *    в массивах любых чисел: целых и вещественных.
-         *
-         * 3. Обобщить метод поиск минимального значения
-         *
-         *    Выполните обобщение метода с использованием шаблона так,
-         *    чтобы метод мог выполнять поиск минимального значения
-         *    в массивах любых чисел: целых и вещественных.
-         *
-         * 4. С использованием отладчика проверьте корректность
-         *    выполнения задания.
-         */
+        int min = Numbers.min(convertorIntArrayToIntegerArray(array));
+        int max = Numbers.max(convertorIntArrayToIntegerArray(array));
+        double avg = Numbers.avg(convertorIntArrayToIntegerArray(array));
+    }
+
+    /**
+     * Конвертирует массив чисел типа int в массив объектов типа Integer
+     * @param array
+     * @return
+     */
+    private static Integer[] convertorIntArrayToIntegerArray(int[] array){
+        Integer[] integersArray = new Integer[array.length];
+        for (int i = 0; i < array.length; i++) {
+            integersArray[i] = Integer.valueOf(array[i]);
+        }
+        return integersArray;
     }
 }

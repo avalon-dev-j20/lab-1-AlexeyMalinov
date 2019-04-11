@@ -6,7 +6,8 @@ public final class Numbers {
      * Скрытый конструктор, чтобы предотвратить создание
      * экземпляров данного типа.
      */
-    private Numbers() {}
+    private Numbers() {
+    }
 
     /**
      * Возвращает сумму значений переданного массиа.
@@ -14,9 +15,9 @@ public final class Numbers {
      * @param values массив чисел
      * @return сумма элементов массива
      */
-    public static int sum(int[] values) {
-        int sum = 0;
-        for (int value : values) sum += value;
+    public static <E extends Number> double sum(E[] values) {
+        double sum = 0;
+        for (E value : values) sum += value.doubleValue();
         return sum;
     }
 
@@ -27,8 +28,9 @@ public final class Numbers {
      * @param values массив значений
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static double avg(int[] values) {
-        return (double) sum(values) / values.length;
+    public static <E extends Number> double avg(E[] values) {
+
+        return sum(values) / values.length;
     }
 
     /**
@@ -38,8 +40,9 @@ public final class Numbers {
      * @param b второе значение
      * @return большее из двух значений
      */
-    public static int max(int a, int b) {
-        return a > b ? a : b;
+    public static <E extends Number> E max(E a, E b) {
+
+        return a.doubleValue() > b.doubleValue() ? a : b;
     }
 
     /**
@@ -48,8 +51,8 @@ public final class Numbers {
      * @param values массив значений
      * @return максимальное значение массива
      */
-    public static int max(int[] values) {
-        int result = values[0];
+    public static <E extends Number> E max(E[] values) {
+        E result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = max(result, values[i]);
         }
@@ -63,8 +66,8 @@ public final class Numbers {
      * @param b второе значение
      * @return меньшее из дух значений
      */
-    public static int min(int a, int b) {
-        return a < b ? a : b;
+    public static <E extends Number> E min(E a, E b) {
+        return a.doubleValue() < b.doubleValue() ? a : b;
     }
 
     /**
@@ -73,8 +76,8 @@ public final class Numbers {
      * @param values массив значений
      * @return минимальное значение массива
      */
-    public static int min(int[] values) {
-        int result = values[0];
+    public static <E extends Number> E min(E[] values) {
+        E result = values[0];
         for (int i = 1; i < values.length; i++) {
             result = min(result, values[i]);
         }
