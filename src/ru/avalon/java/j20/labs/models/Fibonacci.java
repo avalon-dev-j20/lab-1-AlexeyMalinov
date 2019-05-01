@@ -18,11 +18,17 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
 
+    private int number;
+
     /**
      * Итератор, выполняющий обход последовательности
      * чисел Фибоначчи.
      */
-    private static class FibonacciIterator implements Iterator<Integer> {
+    private class FibonacciIterator implements Iterator<Integer> {
+
+        private int point;
+        private int previous1 = 1;
+        private int previous2 = 0;
 
         /**
          * Определяет, есть ли следующее значение
@@ -34,7 +40,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return (point + 1) < number;
         }
 
         /**
@@ -45,8 +51,19 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            if(point < 2){
+                return point++;
+            }
+            point++;
+            int result = previous1 + previous2;
+            previous2 = previous1;
+            previous1 = result;
+            return result;
         }
+    }
+
+    public Fibonacci(int number) {
+        this.number = number;
     }
 
     /**
